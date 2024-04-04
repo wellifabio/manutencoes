@@ -1,7 +1,7 @@
 const con = require('../connect/mysql');
 
-const readVeiculos = (req, res) => {
-    const sql = "SELECT * FROM veiculo";
+const readTelefones = (req, res) => {
+    const sql = "SELECT * FROM telefone";
     con.query(sql, (err, result) => {
         if(err){
             res.json(err);
@@ -11,9 +11,9 @@ const readVeiculos = (req, res) => {
     });
 }
 
-const readVeiculo = (req, res) => {
-    const sql = "SELECT * FROM veiculo WHERE placa LIKE ?";
-    con.query(sql,`%${[req.params.placa]}%`, (err, result) => {
+const readTelefone = (req, res) => {
+    const sql = "SELECT * FROM telefone WHERE matricula LIKE ?";
+    con.query(sql,`%${[req.params.matricula]}%`, (err, result) => {
         if(err){
             res.json(err);
         }else{
@@ -23,6 +23,6 @@ const readVeiculo = (req, res) => {
 }
 
 module.exports = {
-    readVeiculos,
-    readVeiculo
+    readTelefones,
+    readTelefone
 }
